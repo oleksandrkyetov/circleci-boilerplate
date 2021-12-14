@@ -7,6 +7,8 @@ jobs:
     steps:
       - checkout
       - run: echo "Hello world"
+      - run: echo ${CIRCLE_REPOSITORY_URL} # Built-in environment variable is printed
+      - run: echo ${AWS_SECRET_ACCESS_KEY} # Project environment variable is masked
 workflows:
   build:
     jobs:

